@@ -9,17 +9,17 @@ const convertNodesToTree = (nodes, index) => {
     return obj;
 };
 
-const convertTreeToHTML = (nodeObj, continueOlNumbering, olStartNum) => {
+const convertTreeToHTML = (nodeObj, continueOlNumbering, offset) => {
     if (nodeObj.node.nodeName === '#text') return nodeObj.node.nodeValueCut;
 
     const numbering = continueOlNumbering && nodeObj.node.nodeName === 'OL'
-        ? ` start=${olStartNum} `
+        ? ` start=${parseInt(nodeObj.node.attributes.start.nodeValue, 10) + offset}`
         : '';
 
-    let baseString = `<${nodeObj.node.nodeName.toLowerCase()} ${numbering}>`;
+    let baseString = `<${nodeObj.node.nodeName.toLowerCase()}${numbering}>`;
 
     for (let i = 0; i < nodeObj.children.length; i += 1) {
-        baseString += convertTreeToHTML(nodeObj.children[i], continueOlNumbering, olStartNum);
+        baseString += convertTreeToHTML(nodeObj.children[i], continueOlNumbering, offset);
     }
 
     baseString += `</${nodeObj.node.nodeName.toLowerCase()}>`;
@@ -38,16 +38,16 @@ const getHighlightText = (range, continueOlNumbering = true) => {
     };
 
     const {
-        startNode,
-        endNode,
-        commonAncestorNode,
+        startContainer: startNode,
+        endContainer: endNode,
+        commonAncestorContainer: commonAncestorNode,
         startOffset,
         endOffset,
     } = range;
 
     const nodes = [];
 
-    let olStartNum = 1;
+    let offset = 0;
 
     if (startNode === commonAncestorNode) {
         if (startNode.nodeValue) {
@@ -82,18 +82,17 @@ const getHighlightText = (range, continueOlNumbering = true) => {
             }
         }
     }
-
     if ((commonAncestorNode.nodeName === 'OL') || (nodes[1] && nodes[1].node.nodeName === 'OL')) {
         let tempNode = startNode;
         while (tempNode.nodeName !== 'LI') tempNode = tempNode.parentNode;
         while (tempNode.previousSibling && tempNode.previousSibling.nodeName === 'LI') {
-            olStartNum += 1;
+            offset += 1;
             tempNode = tempNode.previousSibling;
         }
     }
 
     const nodeTree = convertNodesToTree(nodes, 0);
-    const html = convertTreeToHTML(nodeTree, continueOlNumbering, olStartNum);
+    const html = convertTreeToHTML(nodeTree, continueOlNumbering, offset);
     return { html, nodeTree };
 };
 
