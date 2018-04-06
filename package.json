@@ -1,0 +1,35 @@
+{
+  "name": "html-snipper",
+  "version": "1.0.0",
+  "description": "Faithfully replicate and snip user highlighted html",
+  "main": "distr/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --presets babel-preset-env --out-dir distr",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertYCXu/html-snipper.git"
+  },
+  "keywords": [
+    "html",
+    "snipper"
+  ],
+  "author": "Robert Xu <rx@robxu.me> (http://robxu.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobertYCXu/html-snipper/issues"
+  },
+  "homepage": "https://github.com/RobertYCXu/html-snipper#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.10.0"
+  },
+  "dependencies": {
+    "npm": "5.8.0"
+  }
+}
