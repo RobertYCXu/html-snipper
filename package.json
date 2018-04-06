@@ -1,6 +1,6 @@
 {
   "name": "html-snipper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Faithfully replicate and snip user highlighted html",
   "main": "distr/index.js",
   "scripts": {
