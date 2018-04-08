@@ -25,4 +25,4 @@ const parsed = getHighlightText(range);
 `parsed.html` is a string containing the html of the highlighted selection.
 
 `parsed.nodeTree` is a tree object of the selected html nodes, with two keys: `node`, the node
-object itself, and `children`, an array of child nodes.*
+object itself, and `children`, an array of child nodes.
