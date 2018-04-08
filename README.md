@@ -15,10 +15,12 @@ to the `ol` (defaults to true).
 
 **Typical Usage**
 
-`const range = window.getSelection().getRangeAt(0);`
-`const parsed = getHighlightText(range);`
+```
+const range = window.getSelection().getRangeAt(0);
+const parsed = getHighlightText(range);
+```
 
-`parsed` is an object containing two keys: `parsed.html` is a string containing the html of the
-highlighted selection. `parsed.nodeTree` is a tree object of the selected html nodes, with two
-keys: `node`, the node object itself, and `children`, an array of child nodes.
-**
+`parsed` is an object containing two keys:
+`parsed.html` is a string containing the html of the highlighted selection.
+`parsed.nodeTree` is a tree object of the selected html nodes, with two keys: `node`, the node
+object itself, and `children`, an array of child nodes.*
