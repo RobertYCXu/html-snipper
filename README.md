@@ -1,5 +1,9 @@
 # html-snipper
 Faithfully replicate and snip user highlighted html text.
+
+# Installation
+`npm install --save html-snipper`
+
 # Usage
 `import { getHighlightText } from 'html-snipper';`
 
