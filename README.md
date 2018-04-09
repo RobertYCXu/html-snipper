@@ -29,4 +29,4 @@ object itself, and `children`, an array of child nodes.
 
 **Misc.**
 
-More information about the `window.getSelection()` [API]: (https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection)
+More information about the `window.getSelection()` [API:](https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection)
